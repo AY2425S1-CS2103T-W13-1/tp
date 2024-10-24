@@ -17,7 +17,10 @@ import seedu.address.logic.commands.EditCommand.EditPersonDescriptor;
 import seedu.address.logic.commands.ExitCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.ListCommand;
+import seedu.address.logic.commands.MarkCommand;
+import seedu.address.logic.commands.ResetAttendanceCommand;
 import seedu.address.logic.commands.SortCommand;
+import seedu.address.logic.commands.UnmarkCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 import seedu.address.testutil.EditPersonDescriptorBuilder;
@@ -73,6 +76,26 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_resetatt() throws Exception {
+        assertTrue(parser.parseCommand(ResetAttendanceCommand.COMMAND_WORD) instanceof ResetAttendanceCommand);
+        assertTrue(parser.parseCommand(ResetAttendanceCommand.COMMAND_WORD + " 3") instanceof ResetAttendanceCommand);
+    }
+
+    @Test
+    public void parseCommand_mark() throws Exception {
+        MarkCommand command = (MarkCommand) parser.parseCommand(
+                MarkCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new MarkCommand(INDEX_FIRST_PERSON), command);
+    }
+
+    @Test
+    public void parseCommand_unmark() throws Exception {
+        UnmarkCommand command = (UnmarkCommand) parser.parseCommand(
+                UnmarkCommand.COMMAND_WORD + " " + INDEX_FIRST_PERSON.getOneBased());
+        assertEquals(new UnmarkCommand(INDEX_FIRST_PERSON), command);
     }
 
     @Test
