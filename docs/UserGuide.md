@@ -154,33 +154,15 @@ Examples:
 
 Deletes the specified person from Cher.
 
-Format: `delete INDEX`
+Format: `delete [INDEX] [n/KEYWORDS] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
-* The index **must be a positive integer** 1, 2, 3, …​
-
-Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the Cher.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
-
-Format: `delete PHONE_NUMBER
-
-* Deletes the person with the specified `PHONE_NUMBER`
-* The phone number **must be present in the list of contacts**
+* Deletes the person with the specified attribute
+* The constraints for keywords are the same as find
+* If duplicates are found, a list of duplicates is returned
 
 Examples:
-* `list` followed by `delete 98765432` deletes the person with the phone number 98765432 in the address book.
-
-Format: `delete PARTIAL_NAME`
-
-* Deletes the person with name matching the specified `PARTIAL_NAME`
-* The partial name **must match at least oner person's name**
-* If multiple persons matching the partial name are found, a list of the matching persons is displayed
-
-Examples:
-* `list` followed by `delete John` deletes the person with the name John in the address book.
-* If multiple persons have the name John, a list of these persons is displayed to the user
+* `delete 1` Delete the first person from the list
+* `delete n/mithuna john` Returns a list showing persons containing the words `Mithuna` or `John`
 
 ### Deleting in a batch : `batch-delete`
 
@@ -265,7 +247,7 @@ Action | Format, Examples
 --------|------------------
 **Add** | `add n/NAME r/ROLE p/PHONE_NUMBER e/EMAIL a/ADDRESS [t/TAG]…​` <br> e.g., `add n/James Ho r/student p/22224444 e/jamesho@example.com a/123, Clementi Rd, 1234665 t/Secondary 1`
 **Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
+**Delete** | `delete INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g., `delete 3`
 **Batch-Delete**| `batch-delete t/TAG [t/TAG]...`<br> e.g. `batch-delete t/friends t/colleagues t/owesmoney t/...`
 **Batch-Edit**| `batch-edit t/OLDTAG t/NEWTAG`<br> e.g. `batch-delete t/friends t/frens`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
