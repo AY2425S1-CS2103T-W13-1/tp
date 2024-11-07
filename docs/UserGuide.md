@@ -119,7 +119,10 @@ Format: `find KEYWORD [MORE_KEYWORDS]`
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
 * Only the name is searched.
-* Only full words will be matched e.g. `Han` will not match `Hans`
+* Partial words will be matched if they appear at the start of any word in the name. For example:
+  - Searching for `Han` will match `Hans Bo`.
+  - Searching for `Bo` will match `Hans Bo`.
+  - However, searching for `ans` will not match `Hans Bo`, as `ans` does not appear at the start of a word.
 * Persons matching at least one keyword will be returned (i.e. `OR` search).
   e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
