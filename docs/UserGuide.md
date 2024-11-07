@@ -114,21 +114,22 @@ Examples:
 
 Finds persons whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find [INDEX] [n/KEYWORDS] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
-* Only the name is searched.
-* Partial words will be matched if they appear at the start of any word in the name. For example:
-  - Searching for `Han` will match `Hans Bo`.
-  - Searching for `Bo` will match `Hans Bo`.
-  - However, searching for `ans` will not match `Hans Bo`, as `ans` does not appear at the start of a word.
-* Persons matching at least one keyword will be returned (i.e. `OR` search).
-  e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
+* Searches for the person using the given attribute
+* For search by name,
+  - The name search is case-insensitive. e.g `hans` will match `Hans`
+  - The order of the keywords does not matter. e.g. `Hans Bo` will match `Bo Hans`
+  - Partial words will be matched if they appear at the start of any word in the name. For example:
+    - Searching for `Han` will match `Hans Bo`
+    - Searching for `Bo` will match `Hans Bo`
+    - However, searching for `ans` will not match `Hans Bo`, as `ans` does not appear at the start of a word.
+  - Persons matching at least one keyword will be returned (i.e. `OR` search).
+    - e.g. `Hans Bo` will return `Hans Gruber`, `Bo Yang`
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex Yeoh`, `David Li`<br>
+* `find p/98765432` Finds the person with phone number `98765432`
+* `find n/alex david` returns `Alex Yeoh`, `David Li`<br>
   ![result for 'find alex david'](images/findAlexDavidResult.png)
 
 ### Sorting persons by name: `sort`
@@ -268,6 +269,6 @@ Action | Format, Examples
 **Batch-Delete**| `batch-delete t/TAG [t/TAG]...`<br> e.g. `batch-delete t/friends t/colleagues t/owesmoney t/...`
 **Batch-Edit**| `batch-edit t/OLDTAG t/NEWTAG`<br> e.g. `batch-delete t/friends t/frens`
 **Edit** | `edit INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g.,`edit 2 n/James Lee e/jameslee@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**Find** | `find INDEX [n/NAME] [p/PHONE_NUMBER] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`<br> e.g., `find n/James Jake`
 **List** | `list`
 **Help** | `help`
