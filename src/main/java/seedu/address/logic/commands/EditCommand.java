@@ -44,7 +44,7 @@ public class EditCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Edits the contact details of the person identified by index. "
             + "Key in the new contact details after the corresponding prefix. \n"
-            + "Parameters: [" + "INDEX" + "] "
+            + "Parameters: INDEX"
             + "[" + PREFIX_NAME + "NAME] "
             + "[" + PREFIX_SEX + "SEX] "
             + "[" + PREFIX_PHONE + "PHONE] "
